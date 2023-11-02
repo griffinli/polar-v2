@@ -61,14 +61,18 @@ function createSolution(solution) {
 }
 
 function giveSolutions(solutions, index = 0) {
+    if (solutions.length === 0) {
+        createMessage("Sorry, no solutions were found. Please refresh the page and try a different query.", "agent");
+        return;
+    }
 
     createSolution(solutions[index][1]);
-    console.log(solutions[index][0])
+    console.log(solutions[index][0]);
     createSpace("same");
     createMessage("Did this work for you?", "agent");
     createSpace("different");
     createOptions(["Yes", "No"]);
-    createSpace("different")
+    createSpace("different");
     
     document.querySelectorAll('.option').forEach((option) => {
         option.onclick = () => {
